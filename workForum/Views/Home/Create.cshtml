@@ -1,0 +1,19 @@
+﻿@model workForum.Models.Album
+
+@{
+    ViewBag.Title = "照片上傳";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+
+<h2>照片上傳</h2>
+
+<form method="post" action="@Url.Action("Create")" enctype="multipart/form-data">
+    <div>
+        請選擇要上傳的檔案
+        <p><input type="file" name="files" id="photo" /></p>
+        <input type="submit" value="上傳" />
+    </div>
+</form>
+<div>
+    @Html.ActionLink("回首頁", "Index")
+</div>

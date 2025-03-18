@@ -1,0 +1,44 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@model IEnumerable<workForum.Models.Message>
+
+@{
+    ViewData["Title"] = "留言版";
+    Layout = "~/Views/Shared/_LayoutMember.cshtml";
+}
+
+<h1>留言版</h1>
+<h3> 標題:@HttpContextAccessor.HttpContext.Session.GetString("title")</h3>
+<p>
+    <a asp-action="Board">我要留言</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                留言
+            </th>
+            <th>
+                留言者
+            </th>
+            <th>
+                留言時間
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateTime)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
